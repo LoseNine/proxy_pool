@@ -17,3 +17,25 @@ redis proxy pool
 * 分数为100为可用，检测器会定时循环检测每个代理，可用则为100，不可用则分数-1，一直到0被清除
 * 新获取的代理分数为10，如何通过测试，分数为100，否则-1，到0被清除
 
+### 使用方法
+
+* 可以在127.0.0.1:8080查看网站接口
+
+```python
+import requests
+
+PROXY_URL='http://127.0.0.1:8080/random'
+
+def get_proxy():
+    response=requests.get(PROXY_URL)
+    return response.text
+
+proxy=get_proxy()
+proxies={
+    'http':"http://"+proxy,
+    'https':'https://'+proxy
+}
+
+response=requests.get('http://httpbin.org/get',proxies=proxies)
+print(response.text)
+```
