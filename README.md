@@ -21,6 +21,28 @@ redis proxy pool
 
 * 可以在127.0.0.1:8080查看网站接口
 
+第一步，启动Flask
+```python
+from schedule import Schedule
+s=Schedule()
+s.run()
+```
+如果启动成功，会有如下画面
+```python
+proxy pool start...
+start crawl proxy...
+Getter is starting
+test is starting...
+run....
+testing  111.177.167.136:9999
+ * Running on http://127.0.0.1:8080/ (Press CTRL+C to quit)
+testing  111.177.169.249:9999
+testing  111.177.170.186:9999
+testing  111.177.173.19:9999
+testing  111.177.173.43:9999
+```
+
+然后就可以调用代理池的代理了
 ```python
 import requests
 
